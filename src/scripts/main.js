@@ -1,4 +1,5 @@
 import SceneInit from './scene';
+import BuildingsInit from './buildings';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as THREE from 'three';
 
@@ -12,6 +13,9 @@ function letsPlay() {
 function init() {
 	Scene = new SceneInit();
 	Scene.createScene();
+
+	Building = new BuildingsInit();
+	Building.createBuildings(Scene);
 
 	let controls = new OrbitControls(Scene.camera, Scene.renderer.domElement);
 	controls.update();
