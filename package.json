@@ -1,0 +1,27 @@
+{
+  "name": "procedural-city",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "webpack-dev-server --port 2222 --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sboez/Procedural-City.git"
+  },
+  "author": "sboez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sboez/Procedural-City/issues"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.1.1",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "fsevents": "^1.2.9"
+  }
+}
