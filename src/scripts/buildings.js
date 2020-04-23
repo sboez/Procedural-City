@@ -31,7 +31,6 @@ export default class BuildingsInit {
 			this.buildingMesh.scale.z = this.buildingMesh.scale.x;
 			this.buildingMesh.updateMatrix();
 	        this.cityGeometry.merge(this.buildingMesh.geometry, this.buildingMesh.matrix);
-	        this.addLights(Scene);
 		}
 		this.addTexture(Scene);
 	}
@@ -77,12 +76,5 @@ export default class BuildingsInit {
 		this.context.drawImage(this.canvas, 0, 0, this.bigCanvas.width, this.bigCanvas.height);
 
 		return this.bigCanvas;
-	}
-	addLights(Scene) {
-		this.buildingLight = new THREE.PointLight(0xffffff, 0.05);
-        this.buildingLight.position.x = this.buildingMesh.position.x;
-        this.buildingLight.position.y = this.buildingMesh.position.y;
-        this.buildingLight.position.z = this.buildingMesh.position.z;
-        Scene.scene.add(this.buildingLight);
 	}
 }   

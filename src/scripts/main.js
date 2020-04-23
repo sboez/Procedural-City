@@ -1,9 +1,9 @@
 import SceneInit from './scene';
+import LightsInit from './lights';
 import BuildingsInit from './buildings';
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import * as THREE from 'three';
 
-let Scene, Building;
+let Scene, GridMap, Building, Light;
 
 function letsPlay() {
 	init();
@@ -13,12 +13,13 @@ function letsPlay() {
 function init() {
 	Scene = new SceneInit();
 	Scene.createScene();
+	Scene.addControls();
+
+	Light = new LightsInit();
+	Light.createLights(Scene);
 
 	Building = new BuildingsInit();
 	Building.createBuildings(Scene);
-
-	let controls = new OrbitControls(Scene.camera, Scene.renderer.domElement);
-	controls.update();
 
 	window.addEventListener('resize', onWindowResize, false);
 	document.body.appendChild(Scene.renderer.domElement);
@@ -31,6 +32,8 @@ function onWindowResize() {
 }
 
 function animate() {
+	Light.renderLights(Scene);
+
 	requestAnimationFrame(animate);
 	Scene.renderer.render(Scene.scene, Scene.camera);
 }
