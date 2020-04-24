@@ -4,8 +4,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
 	entry: './src/scripts/main.js',
 	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: 'dist/main.js',
+		path: path.resolve(__dirname, 'build'),
+		filename: 'main.js',
+	},
+	performance: {
+		hints: false
 	},
 	plugins: [
 		new CopyWebpackPlugin([{ from: '**/*', to: '' }], {
@@ -14,6 +17,7 @@ module.exports = {
 		}),
 	],
 	devServer: {
-		contentBase: path.resolve(__dirname, 'dist'),
-	},
+		historyApiFallback: true,
+		port: 9000
+	}
 };

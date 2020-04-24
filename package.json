@@ -4,7 +4,9 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server --port 2222 --watch"
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --watch --open",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -17,12 +19,12 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
+    "gh-pages": "^2.2.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "fsevents": "^2.1.2",
     "three": "^0.115.0"
   }
 }
