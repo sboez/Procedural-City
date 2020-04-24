@@ -1,8 +1,7 @@
 {
   "name": "procedural-city",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "homepage": "https://sboez.github.io/Procedural-City/",
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --watch --open",
