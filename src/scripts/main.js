@@ -3,7 +3,7 @@ import LightsInit from './lights';
 import BuildingsInit from './buildings';
 import * as THREE from 'three';
 
-let Scene, GridMap, Building, Light;
+let Scene, Light;
 
 function letsPlay() {
 	init();
@@ -18,7 +18,7 @@ function init() {
 	Light = new LightsInit();
 	Light.createLights(Scene);
 
-	Building = new BuildingsInit();
+	let Building = new BuildingsInit();
 	Building.createBuildings(Scene);
 
 	window.addEventListener('resize', onWindowResize, false);
@@ -32,8 +32,7 @@ function onWindowResize() {
 }
 
 function animate() {
-	Light.renderLights(Scene);
-
+	Light.renderLights();
 	requestAnimationFrame(animate);
 	Scene.renderer.render(Scene.scene, Scene.camera);
 }

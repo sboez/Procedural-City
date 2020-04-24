@@ -2,24 +2,47 @@ import SceneInit from './scene';
 import * as THREE from 'three';
 
 export default class LightsInit {
+	constructor(pointLights) {
+		this.pointLights = [];
+		this.pointLights.length = 6;
+	}
 	createLights(Scene) {
 		this.sphere = new THREE.SphereBufferGeometry(5, 8, 8);
-		this.material = new THREE.MeshBasicMaterial({ color: 0xff0040 });
+		this.material = new THREE.MeshBasicMaterial({ color: 0x000000 });
 
-		this.redLight = new THREE.PointLight( 0xff0040, 50, 400, 2.0 );
-		this.redLight.add(new THREE.Mesh(this.sphere, this.material));
-		this.redLight.position.set(1000, 300, 500);
-		this.redLight.castShadow = true;
-		Scene.scene.add(this.redLight);
+		let x = [], z = [];
+		this.v1 = [], this.v2 = [];
+		/* random lights position X and Z between -1000 and 1000 
+			and random value for animation */
+		for(let i = 0; i < this.pointLights.length * 2; ++i) {
+	   		x.push(this.getRandom(-1000, 1000));
+	   		z.push(this.getRandom(-1000, 1000));
+
+	   		this.v1.push(this.getRandom(0.5, 1));
+			this.v2.push(this.getRandom(0.1, 1));
+	   	}
+
+		for (let i = 0; i < this.pointLights.length; ++i) {
+			this.pointLights[i] = new THREE.PointLight(this.getRandomColor(), 50, 400, 2.0);
+			this.pointLights[i].add(new THREE.Mesh(this.sphere, this.material));
+			this.pointLights[i].position.set(x[i], 300, z[i]);
+			Scene.scene.add(this.pointLights[i]);
+		}
 	}
-	renderLights(Scene) {
+	renderLights() {
 		const clock = new THREE.Clock();
 		const time = Date.now() * 0.0025;
-		const dt = 100;
+		const dt = 8;
 
-		this.redLight.position.x = Math.sin(time * 0.7) * dt;
-		this.redLight.position.z = Math.cos(time * 0.3) * dt;
-
-		Scene.controls.update(clock.getDelta());
+		for (let i = 0; i < this.pointLights.length; ++i) {
+			this.pointLights[i].position.x += Math.sin(time * this.v1[i]) * dt;
+			this.pointLights[i].position.z += Math.cos(time * this.v2[i]) * dt;
+		}
+	}
+	getRandom(min, max) {
+		return Math.random() * (max - min) + min;
+	}
+	getRandomColor() {
+		return ('#' + (0x1000000 + (Math.random()) * 0xffffff).toString(16).substr(1, 6));
 	}
 }
