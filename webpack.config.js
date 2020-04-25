@@ -7,6 +7,9 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'dist/main.js',
 	},
+	performance: {
+		hints: false
+	},
 	plugins: [
 		new CopyWebpackPlugin([{ from: '**/*', to: '' }], {
 			context: 'src',
@@ -15,5 +18,7 @@ module.exports = {
 	],
 	devServer: {
 		contentBase: path.resolve(__dirname, 'dist'),
+		port: 9000, 
+		historyApiFallback: true
 	},
 };

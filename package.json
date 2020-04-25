@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server --port 2222 --watch"
+    "start": "webpack-dev-server --watch --open"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,6 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "fsevents": "^2.1.2",
     "three": "^0.115.0"
   }
 }

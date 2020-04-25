@@ -4,7 +4,7 @@ import * as THREE from 'three';
 export default class LightsInit {
 	constructor(pointLights) {
 		this.pointLights = [];
-		this.pointLights.length = 6;
+		this.pointLights.length = 12;
 	}
 	createLights(Scene) {
 		this.sphere = new THREE.SphereBufferGeometry(5, 8, 8);
